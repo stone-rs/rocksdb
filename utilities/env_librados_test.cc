@@ -52,7 +52,7 @@ public:
   const std::string db_name = "env_librados_test_db";
   const std::string db_pool = db_name + "_pool";
   const char *keyring = "admin";
-  const char *config = "../ceph/src/ceph.conf";
+  const char *config = "../stone/src/stone.conf";
 
   EnvLibrados* env_;
   const EnvOptions soptions_;
@@ -731,7 +731,7 @@ class EnvLibradosMutipoolTest : public testing::Test {
 public:
   // we will use all of these below
   const std::string client_name = "client.admin";
-  const std::string cluster_name = "ceph";
+  const std::string cluster_name = "stone";
   const uint64_t flags = 0;
   const std::string db_name = "env_librados_test_db";
   const std::string db_pool = db_name + "_pool";
@@ -739,7 +739,7 @@ public:
   const std::string wal_pool = db_name + "_wal_pool";
   const size_t write_buffer_size = 1 << 20;
   const char *keyring = "admin";
-  const char *config = "../ceph/src/ceph.conf";
+  const char *config = "../stone/src/stone.conf";
 
   EnvLibrados* env_;
   const EnvOptions soptions_;

@@ -24,7 +24,7 @@ namespace rocksdb {
 /* GLOBAL CONSTANT */
 const char *default_db_name     = "default_envlibrados_db";
 const char *default_pool_name   = "default_envlibrados_pool";
-const char *default_config_path = "CEPH_CONFIG_PATH";           // the env variable name of ceph configure file
+const char *default_config_path = "CEPH_CONFIG_PATH";           // the env variable name of stone configure file
 // maximum dir/file that can store in the fs
 const int MAX_ITEMS_IN_FS = 1 << 30;
 // root dir tag
@@ -584,7 +584,7 @@ EnvLibrados::EnvLibrados(const std::string& db_name,
                          const std::string& config_path,
                          const std::string& db_pool)
   : EnvLibrados("client.admin",
-                "ceph",
+                "stone",
                 0,
                 db_name,
                 config_path,

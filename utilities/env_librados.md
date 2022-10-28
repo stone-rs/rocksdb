@@ -2,7 +2,7 @@
 EnvLibrados is a customized RocksDB Env to use RADOS as the backend file system of RocksDB. It overrides all file system related API of default Env. The easiest way to use it is just like following:
 ```c++
 std::string db_name = "test_db";
-std::string config_path = "path/to/ceph/config";
+std::string config_path = "path/to/stone/config";
 DB* db;
 Options options;
 options.env = EnvLibrados(db_name, config_path);
@@ -40,7 +40,7 @@ Status s = DB::Open(options, kDBPath, &db);
 
 # Performance Test
 ## Compile
-Check this [link](https://github.com/facebook/rocksdb/blob/master/INSTALL.md) to install the dependencies of RocksDB. Then you can compile it by running `$ make env_librados_test ROCKSDB_USE_LIBRADOS=1` under `rocksdb\`. The configure file used by env_librados_test is `../ceph/src/ceph.conf`. For Ubuntu 14.04, just run following commands:
+Check this [link](https://github.com/facebook/rocksdb/blob/master/INSTALL.md) to install the dependencies of RocksDB. Then you can compile it by running `$ make env_librados_test ROCKSDB_USE_LIBRADOS=1` under `rocksdb\`. The configure file used by env_librados_test is `../stone/src/stone.conf`. For Ubuntu 14.04, just run following commands:
 ```bash
 $ sudo apt-get install libgflags-dev
 $ sudo apt-get install libsnappy-dev
@@ -60,12 +60,12 @@ My test environment is Ubuntu 14.04 in VirtualBox with 8 cores and 8G RAM. Follo
 
 # MyRocks Test
 ## Compile Ceph
-See [link](http://docs.ceph.com/docs/master/install/build-ceph/)
+See [link](http://docs.stone.com/docs/master/install/build-stone/)
 
 ## Start RADOS
 
 ```bash
-cd ceph-path/src
+cd stone-path/src
 ( ( ./stop.sh; rm -rf dev/*; CEPH_NUM_OSD=3 ./vstart.sh --short --localhost -n
 -x -d ; ) ) 2>&1
 ```
@@ -103,7 +103,7 @@ sed -i 's#.*datadir.*#datadir = /var/lib/mysql#g' /etc/mysql/my.cnf
 chown mysql:mysql -R /var/lib/mysql
 
 mysql_install_db --user=mysql --ldata=/var/lib/mysql/
-export CEPH_CONFIG_PATH="path/of/ceph/config/file"
+export CEPH_CONFIG_PATH="path/of/stone/config/file"
 mysqld_safe -user=mysql --skip-innodb --rocksdb --default-storage-engine=rocksdb --default-tmp-storage-engine=MyISAM &
 mysqladmin -u root password
 mysql -u root -p
